@@ -1,0 +1,98 @@
+/* General Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Navbar Styling */
+nav {
+    background-color: #4CAF50; /* Greener color */
+    padding: 10px 20px;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-right {
+    position: relative;
+}
+
+/* User Photo Styling */
+.user-photo img {
+    width: 60px; /* Increase size */
+    height: 60px; /* Ensure it is square */
+    border-radius: 50%; /* This makes it round */
+    border: 3px solid #fff; /* Optional: make border white for contrast */
+}
+
+/* Main Content Styling */
+.main-content {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.buttons-container {
+    margin-bottom: 40px;
+}
+
+.btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    margin: 10px;
+}
+
+.create-game {
+    background-color: #ff6f61; /* Light red/pink */
+    color: white;
+}
+
+.join-game {
+    background-color: #bb86fc; /* Very light purple */
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* Available Rooms Container */
+.available-rooms {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.room {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.room-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.join-room {
+    background-color: #4CAF50; /* Greener color */
+    color: white;
+}
+
+.room:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+

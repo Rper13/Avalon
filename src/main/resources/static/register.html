@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<div class="login-container">
+  <h2>Register</h2>
+  <form id="registerForm">
+    <div class="input-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Enter your username" required>
+    </div>
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+    </div>
+    <div class="input-group">
+      <label for="repeatPassword">Repeat Password</label>
+      <input type="password" id="repeatPassword" name="repeatPassword" placeholder="Repeat your password" required>
+    </div>
+    <div class="form-footer">
+      <button type="submit" class="btn-login">Register</button>
+    </div>
+  </form>
+  <div id="error-message" style="color: red;"></div>
+  <div class="register-link">
+    <p>Already have an account? <a href="/login.html" class="btn-register">Login here</a></p>
+  </div>
+</div>
+
+<script src="js/register.js"></script>
+</body>
+</html>
