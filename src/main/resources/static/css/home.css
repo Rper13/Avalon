@@ -149,11 +149,6 @@ button:hover {
     opacity: 0.9;
 }
 
-.join-game {
-    background-color: #bb86fc; /* Very light purple */
-    color: white;
-}
-
 .btn:hover {
     transform: translateY(-2px);
     opacity: 0.9;
@@ -168,76 +163,98 @@ button:hover {
     margin-top: 20px;
 }
 
-/* Room Styling */
-.room {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+/* Main styling for the game box container */
+#roomsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
     padding: 20px;
-    width: 300px;
-    max-width: 90%;
-    text-align: center;
+    margin-top: 20px;
+}
+
+/* Styling for individual game boxes */
+.game-box {
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.1s ease, box-shadow 0.2s ease;
-    position: relative; /* For absolute positioning of room ID */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Room Name Styling */
-.room-name {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-/* Game ID Styling (Top Left Corner) */
-.room-id {
+/* Game ID styling (small font in the top-left corner) */
+.game-id {
+    font-size: 12px;
+    color: #6c757d;
     position: absolute;
     top: 10px;
     left: 10px;
-    background-color: rgba(0, 0, 0, 0.3); /* Transparent background */
-    color: #fff;
-    font-size: 12px;
-    padding: 5px;
-    border-radius: 5px;
 }
 
-/* Vote Status Styling */
-.vote-status {
-    font-size: 14px;
-    color: #777;
+/* Game Name centered in the box */
+.game-name {
+    font-size: 16px;  /* Slightly smaller font */
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Styling for game information (creator, players, voting type, status) */
+.game-info {
+    display: flex;
+    flex-direction: column;
     margin-top: 10px;
+    text-align: left;
 }
 
-/* Player Status Styling */
-.players-status {
-    font-size: 14px;
-    color: #777;
+/* Creator ID styling (smaller font) */
+.game-creator {
+    font-size: 13px;  /* Slightly smaller font */
+    font-style: italic;
+    text-align: center;
+    margin: 5px 0;
+}
+
+/* Game Status (cozy styling, smaller font) */
+.game-status {
+    font-size: 12px;
+    color: #6c757d;
     margin-top: 5px;
 }
 
-/* Hover effect for Room */
-.room:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
+/* Other game info elements */
+.game-info div {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #495057;
 }
 
-/* Join Game Button Styling */
-.join-room {
-    background-color: #4CAF50; /* Greener color */
+/* Join button styling */
+.join-btn {
+    background-color: #4CAF50; /* Green button */
     color: white;
+    border: none;
     padding: 10px 15px;
-    font-size: 16px;
-    border-radius: 8px;
-    margin-top: 15px;
+    border-radius: 5px;
     cursor: pointer;
+    align-self: center;
+    margin-top: 15px;
+    font-size: 14px;
 }
 
-/* Button hover effect */
-.join-room:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
+.join-btn:hover {
+    background-color: #45a049; /* Darker green on hover */
 }
+
+/* Hover effect for the game box */
+.game-box:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
 
 /* Responsive Design */
 @media (max-width: 600px) {

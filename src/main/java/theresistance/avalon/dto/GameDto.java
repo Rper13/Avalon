@@ -8,15 +8,22 @@ public class GameDto {
 
     private boolean voting_type;
     private int max_players;
-    private int status;
+    private String status;
 
     private Long creator_id;
 
-    public GameDto(Long game_id, boolean voting_type, int max_players, int status, Long creator_id) {
+    public GameDto(Long game_id, String gameName, boolean voting_type, int max_players, int status, Long creator_id) {
         this.game_id = game_id;
+        this.gameName = gameName;
         this.voting_type = voting_type;
         this.max_players = max_players;
-        this.status = status;
+        this.status = "[Something is Wrong]";
+        switch (status) {
+            case 1 -> this.status = "Not Started";
+            case 2 -> this.status = "In Progress";
+            case 3 -> this.status = "Ended";
+        }
+
         this.creator_id = creator_id;
     }
 
@@ -51,20 +58,19 @@ public class GameDto {
     public void setMax_players(int max_players) {
         this.max_players = max_players;
     }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
     public Long getCreator_id() {
         return creator_id;
     }
 
     public void setCreator_username(Long creator_id) {
         this.creator_id = creator_id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

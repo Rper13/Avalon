@@ -10,6 +10,7 @@ import theresistance.avalon.repository.GameRepository;
 import theresistance.avalon.repository.UserRepository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -35,6 +36,7 @@ public class MainREST {
 
                 response.put("success", true);
                 response.put("message", "Login Successful.");
+                session.removeAttribute("user");
                 session.setAttribute("user", userEntity);
                 return response;
             }
@@ -64,7 +66,10 @@ public class MainREST {
 
         userRepository.save(userEntity);
 
+        session.removeAttribute("user");
         session.setAttribute("user", userEntity);
+
+        response.put("success",true);
 
         return response;
     }
@@ -87,6 +92,18 @@ public class MainREST {
         return response;
     }
 
+    @GetMapping("/userById")
+    public Map<String, Object> userById(@RequestParam Long user_id){
+        Map<String, Object> response = new HashMap<>();
+
+        String username = userRepository.getReferenceById(user_id).getUsername();
+
+        response.put("success",true);
+        response.put("username", username);
+
+        return response;
+    }
+
     @PostMapping("/addGame")
     public Map<String, Object> addGame(@RequestBody GameDto gameData, HttpSession session){
         Map<String, Object> response = new HashMap<>();
@@ -95,12 +112,11 @@ public class MainREST {
 
         UserEntity creator = (UserEntity) session.getAttribute("user");
 
-        System.err.println(creator.getId() + " " + creator.getUsername() + " " + creator.getPassword());
-
         gameEntity.setCreator_id(creator);
         gameEntity.setMax_players(gameData.getMax_players());
         gameEntity.setVoting_type(gameData.isVoting_type());
         gameEntity.setGameName(gameData.getGameName());
+        gameEntity.setStatus(1);
 
         gameRepository.save(gameEntity);
 
@@ -109,6 +125,26 @@ public class MainREST {
         return response;
     }
 
+    @PostMapping("/loadGames")
+    public Map<String, Object> loadGames(){
+        Map<String, Object> response = new HashMap<>();
+
+        List<GameEntity> gameEntities = gameRepository.getGames();
+
+        List<GameDto> games = gameEntities.stream().map( game -> new GameDto(
+                game.getGame_id(),
+                game.getGameName(),
+                game.isVoting_type(),
+                game.getMax_players(),
+                game.getStatus(),
+                game.getCreator_id().getId()
+        )).toList();
+
+        response.put("success", true);
+        response.put("games", games);
+
+        return response;
+    }
 
 
 }

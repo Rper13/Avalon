@@ -22,6 +22,8 @@ public class GameEntity {
     private boolean voting_type;
     private int max_players;
 
+    private int status;
+
     public GameEntity() { }
 
     public Long getGame_id() {
@@ -62,5 +64,13 @@ public class GameEntity {
 
     public void setMax_players(int max_players) {
         this.max_players = max_players;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }
