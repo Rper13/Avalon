@@ -2,15 +2,13 @@ package theresistance.avalon.controller;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import theresistance.avalon.model.User;
+import theresistance.avalon.model.UserEntity;
 import theresistance.avalon.repository.UserRepository;
 
 import java.util.Optional;
@@ -35,11 +33,11 @@ public class MainControllerTest {
     @Test
     void testLoginSuccess() throws Exception {
         // Arrange
-        User mockUser = new User();
-        mockUser.setUsername("testUser");
-        mockUser.setPassword("testPassword");
+        UserEntity mockUserEntity = new UserEntity();
+        mockUserEntity.setUsername("testUser");
+        mockUserEntity.setPassword("testPassword");
 
-        when(userRepository.findByUsername("testUser")).thenReturn(Optional.of(mockUser));
+        when(userRepository.findByUsername("testUser")).thenReturn(Optional.of(mockUserEntity));
 
         // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/login")
@@ -52,11 +50,11 @@ public class MainControllerTest {
     @Test
     void testLoginFailure_InvalidPassword() throws Exception {
         // Arrange
-        User mockUser = new User();
-        mockUser.setUsername("testUser");
-        mockUser.setPassword("correctPassword");
+        UserEntity mockUserEntity = new UserEntity();
+        mockUserEntity.setUsername("testUser");
+        mockUserEntity.setPassword("correctPassword");
 
-        when(userRepository.findByUsername("testUser")).thenReturn(Optional.of(mockUser));
+        when(userRepository.findByUsername("testUser")).thenReturn(Optional.of(mockUserEntity));
 
         // Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/login")
